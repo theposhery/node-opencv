@@ -1125,7 +1125,12 @@ NAN_METHOD(Matrix::FindContours) {
     if (args[1]->IsNumber()) chain = args[1]->IntegerValue();
   }
 
-	Local<Object> conts_to_return= NanNew(Contour::constructor)->GetFunction()->NewInstance();
+	//Local<Object> conts_to_return= NanNew(Contour::constructor)->GetFunction()->NewInstance();
+	/* + */ Matrix *self = ObjectWrap::Unwrap<Matrix>(args.This());
+            Local<Object> conts_to_return= NanNew(Contour::constructor)->GetFunction()->NewInstance();
+    /* + */ Contour *contours = ObjectWrap::Unwrap<Contour>(conts_to_return);
+
+    /* + */ cv::findContours(self->mat, contours->contours, contours->hierarchy, mode, chain);
 
 	NanReturnValue(conts_to_return);
 

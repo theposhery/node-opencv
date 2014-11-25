@@ -1,4 +1,10 @@
-# node-opencv 
+# Forked. Changed files are as follows:
+
+Matrix.cc
+fixed findContours according to https://github.com/peterbraden/node-opencv/issues/182
+
+
+# node-opencv
 
 [![Build Status](https://secure.travis-ci.org/peterbraden/node-opencv.png)](http://travis-ci.org/peterbraden/node-opencv)
 
